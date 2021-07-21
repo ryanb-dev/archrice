@@ -1,0 +1,1 @@
+/home/ryanb/.config/shell/profile

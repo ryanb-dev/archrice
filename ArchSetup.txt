@@ -1,0 +1,133 @@
+# 
+# A list of the process I took to config this install of Arch Linux.
+# Includes passwords and .configs
+# TODO: Convert this into a script
+#
+
+# `lsblk`
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0 596.2G  0 disk 
+├─sda1   8:1    0   488M  0 part 
+├─sda2   8:2    0    50G  0 part /
+└─sda3   8:3    0 545.7G  0 part /home
+sr0     11:0    1  1024M  0 rom  
+
+# Some initial package installs
+	`pacman -S vim`			# Vim: A terminal text editor.
+	`pacman -S networkmanager` 	# NetworkManager: Program for providing detection and configuration for systems to automatically connect to networks.
+
+# Log in to network manager:
+	List nearby Wi-Fi networks: `nmcli device wifi list`
+	Connect to a Wi-Fi network: `ncli --ask device wifi connect SSID_or_BSSID`
+
+# Install packages necessary for graphical environment
+	`pacman -S xorg-server`		# xorg-server: The graphical server 
+	`pacman -S xorg-xinit`		# xorg-xinit: Starts the graphical server
+	`pacman -S xorg-xwininfo`	# xorg-xwininfo: Allows querying information about windows
+	`pacman -S xorg-xprop`		# xorg-xprop: A tool for detecting window properties.
+	# You can start X by running `xinit` or `startx`.  This will read ~/.xinitrc to know what to start.
+
+# Install wm 	
+	`pacman -S i3-gaps`		# i3-gaps: A fork of i3wm iling window manager with more features, including gaps. (Includes i3bar)
+	`pacman -S i3status`
+
+# Make the X server start i3-gaps when it starts
+	In /etc/X11/xinit/xinitrc: `exec i3-gaps`
+
+# Install terminal package
+	`pacman -S rxvt-unicode`	# Urxvt: A customizable terminal emulator forked from rxvt.
+
+# Change the i3 config to boot Urxvt on $super+[Enter]
+	Edit ~/.config/i3/config
+
+# Install xss-lock and nm-applet (Referenced in i3 config) TODO: Determine if needed.
+	`pacman -S xss-lock network-manager-applet`
+
+# Install a program launcher
+	`pacman -S rofi`		# Rofi: A program launcher, similar to dmenu but with more options
+
+# Install fonts
+	`pacman -S ttf-hack ttf-droid`
+
+# Install curl
+	`pacman -S curl`
+
+# Setup .Xresources file.  I based mine off of one found at https://github.com/addy-dclxvi/i3-starterpack
+# Setup i3status config.  Based mine of one found at https://github.com/addy-dclxvi/i3-starterpack
+
+# Install Xsel: A program to access X clipboard. Currently used for urxvt.
+	`pacman -S xsel` 
+
+# Install notification support: # TODO
+	`pacman -S libnotify dunst` # Can find dunst config at addy and luke smith github again
+
+# Install firewall
+	`pacman -S nftables`
+	`systemctl enable nftables`
+	# Uses simple, default settings
+
+# Install unrar/unzip
+	`pacman -S unrar unzip`
+
+# Install firefox
+	`pacman -S firefox`
+
+# Download and configure Zsh.  Setup startx after login.
+	`pacman -S zsh`
+	`chsh -s /bin/zsh`
+	`ln -s ~/.config/shell/profile ~/.zprofile
+	# Config file found at `~/.config/zsh/.zshrc`
+
+# Download yay and git
+	`pacman -Syu git`
+	`git clone https://aur.archlinux.org/yay.git`
+	`cd yay`
+	`makepkg -si`
+	`sudo rm -r yay`
+
+# Download zsh plugins
+	`yay -S zsh-vi-mode
+	`yay -S zsh-fast-syntax-highlighting`
+
+# Install keyboard-select and font-size urxvt perl extension
+	`git clone https://github.com/muennich/urxvt-perls`
+	`git clone https://github.com/majutsushi/urxvt-font-size.git`
+	 # Move both to ~/.urxvt/ext/
+
+# Configured rofi: ~/.config/rofi/config.rasi
+
+# Achieve fastest possible boot by having GRUB hide it's menu
+	Edit `/etc/default/grub`: GRUB_FORCE_HIDDEN_MENU="true"
+	Create /etc/grub.d/31_hold_shift containing script from archlinux.org
+	Make it executable and regenerate the grub configuration
+	chmod a+x /etc/grub.d/31_hold_shift
+	grub-mkconfig -o /boot/grub/grub.cfg
+
+# Install and config nvim
+	`pacman -Syu neovim`
+	Config stored at: `~/.config/nvim/init.vim`
+
+# TODO: Install python3
+
+# Install peass, nmap
+	`cd /opt/`
+	`sudo git clone https://github.com/carlospolop/PEASS-ng.giit`
+	`pacman -Syu nmap`
+
+# Install lf, for directory management
+	`yay -Syu lf-git`
+
+# Install pipewire, as our audio server
+	1. Uninstall pulseaudio.
+	2. Install: `sudo pacman -Syu pipewire pipewire-pulse pipewire-alsa pipewire-docs`
+	3. `yay -Syu pipewire-jack`	
+	4. Enable Pipewire services systemctl --user enable pipewire.service pipewire-pulse.service
+	5. Reboot.
+
+# Install man-db to be able to use `man`
+	`sudo pacman -Syu man-db`
+
+# Set up tracking in git repo
+	$ git init --bare ~/.dotfiles
+	$ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+	$ config config status.showUntrackedFiles no
