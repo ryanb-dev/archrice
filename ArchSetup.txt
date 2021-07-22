@@ -131,3 +131,10 @@ sr0     11:0    1  1024M  0 rom
 	$ git init --bare ~/.dotfiles
 	$ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 	$ config config status.showUntrackedFiles no
+
+# Install OpenSSH, sshpass
+	`pacman -Syu openssh sshpass'
+
+# Install light to enable changing screen brightness levels
+	`pacman -Syu light` 
+	Add user to group video: `usermod -a -G video $(whoami)`	

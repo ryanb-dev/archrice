@@ -19,14 +19,26 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# Source fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # Enable zsh-vi-mode.plugin
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-bindkey -s '^o' 'lf\n'
-bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n' # TODO: Figure out why this is not working
+# Function to cd into directory via lf
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+
+bindkey -s '^o' 'lfcd\n'
+bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
 # Aliases
 alias config='/usr/bin/git --git-dir=/home/ryanb/.dotfiles/ --work-tree=/home/ryanb'
