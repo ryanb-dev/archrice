@@ -3,50 +3,50 @@
 ! ------------------------------------------------------------------------------
 
 ! special
-*.foreground:   #d8dee8
-*.background:   #2f343f
-*.cursorColor:  #b48ead
+*.foreground:   #c8ccd4
+*.background:   #1e222a 
+*.cursorColor:  #abb2bf
 
 ! black
-*.color0  : #4b5262
-*.color8  : #434a5a
+*.color0  : #1e222a
+*.color8  : #545862
 
 ! red
-*.color1  : #bf616a
-*.color9  : #b3555e
+*.color1  : #e06c75
+*.color9  : #e06c75
 
 ! green
-*.color2  : #a3be8c
-*.color10 : #93ae7c
+*.color2  : #98c379
+*.color10 : #98c379
 
 ! yellow
-*.color3  : #ebcb8b
-*.color11 : #dbbb7b
+*.color3  : #e5c07b
+*.color11 : #e5c07b
 
 ! blue
-*.color4  : #81a1c1
-*.color12 : #7191b1
+*.color4  : #61afef
+*.color12 : #61afef
 
 ! magenta
-*.color5  : #b48ead
-*.color13 : #a6809f
+*.color5  : #c678dd
+*.color13 : #c678dd
 
 ! cyan
-*.color6  : #89d0bA
-*.color14 : #7dbba8
+*.color6  : #56b6c2
+*.color14 : #56b6c2
 
 ! white
-*.color7  : #e5e9f0
-*.color15 : #d1d5dc
+*.color7  : #abb2bf
+*.color15 : #abb2bf
 
 ! ------------------------------------------------------------------------------
 ! Font configuration
 ! ------------------------------------------------------------------------------
 
-URxvt*font:			xft:DroidSansMono:size=10
-URxvt*boldFont:			xft:Hack-Bold:size=10
-URxvt*italicFont:		xft:Hack-Italic:size=10
-URxvt*boldItalicFont:		xft:Hack-BoldItalic:size=10
+URxvt*font:		xft:JetBrainsMono Nerd Font Mono:style=Medium:pixelsize=14, xft:Braille:style=Regular:pixelsize=14
+URxvt*boldFont:		xft:JetBrainsMono Nerd Font Mono:style=Medium Bold:pixelsize=14
+URxvt*italicFont:	xft:JetBrainsMono Nerd Font Mono:style=Medium Italic:pixelsize=14
+URxvt*boldItalicFont:	xft:JetBrainsMono Nerd Font Mono:style=Bold Italic:pixesize=14
 
 ! ------------------------------------------------------------------------------
 ! Xft Font Configuration
@@ -77,7 +77,7 @@ URxvt*urgentOnBell:		true
 URxvt*depth:			24
 URxvt*scrollBar:		false
 URxvt*scrollBar_right:		false
-URxvt*internalBorder:		24
+URxvt*internalBorder:		0
 URxvt*externalBorder:		0
 URxvt.geometry:			84x22
 

@@ -138,3 +138,15 @@ sr0     11:0    1  1024M  0 rom
 # Install light to enable changing screen brightness levels
 	`pacman -Syu light` 
 	Add user to group video: `usermod -a -G video $(whoami)`	
+
+#Neovim setup--------
+# NvChad install
+	`git clone https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim`
+	`git clone https://github.com/siduck76/NvChad.git`
+
+# Install another font:`yay -Syu nerd-fonts-jetbrains-mono, ttf-ubraille` 	
+  Install language server for cpp and python3: ':LspInstall cpp python'
+  Install syntax highlighter from tree sitter: ':TSInstall cpp python`:'
+----
+# Change i3 to use vim keybindings 

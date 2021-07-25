@@ -48,10 +48,10 @@ bindsym $super+c kill
 bindsym $alt+F4 kill
 
 # change focus
-bindsym $super+j focus left
-bindsym $super+k focus down
-bindsym $super+l focus up
-bindsym $super+semicolon focus right
+bindsym $super+h focus left
+bindsym $super+j focus down
+bindsym $super+k focus up
+bindsym $super+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $super+Left focus left
@@ -60,10 +60,10 @@ bindsym $super+Up focus up
 bindsym $super+Right focus right
 
 # move focused window
-bindsym $super+Shift+j move left
-bindsym $super+Shift+k move down
-bindsym $super+Shift+l move up
-bindsym $super+Shift+semicolon move right
+bindsym $super+Shift+h move left
+bindsym $super+Shift+j move down
+bindsym $super+Shift+k move up
+bindsym $super+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $super+Shift+Left move left
@@ -71,11 +71,12 @@ bindsym $super+Shift+Down move down
 bindsym $super+Shift+Up move up
 bindsym $super+Shift+Right move right
 
+# Currently just using toggle with super+v
 # split in horizontal orientation
-bindsym $super+h split h
+# bindsym $super+h split h
 
 # split in vertical orientation
-bindsym $super+v split v
+bindsym $super+v split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $super+f fullscreen toggle
@@ -153,10 +154,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -195,10 +196,11 @@ bar {
 # etc..
 
 # Pretty gaps stuff
-for_window [class=".*"] border pixel 2 # Disable window titlebars for i3-gaps
-
-gaps inner 4
-gaps outer 4
+# for_window [class=".*"] border pixel 2 # Disable window titlebars for i3-gaps
+default_border pixel 1
+default_floating_border pixel 1
+# gaps inner 4
+# gaps outer 4
 
 # Color of border, background, text, indicator, and child_border #e5e9f0
 client.focused			#222d32 #222d32 #f8f8f2 #bf616a #f8f8f2
