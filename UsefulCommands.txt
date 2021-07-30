@@ -1,0 +1,6 @@
+# ------------------------------------ 
+# UsefulArchCommands.txt
+# A small list of useful arch commands
+# ------------------------------------
+
+sudo pacman -Rcns <package_name>  # Remove package and it's dependencies

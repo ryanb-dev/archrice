@@ -197,6 +197,7 @@ bar {
 
 # Pretty gaps stuff
 # for_window [class=".*"] border pixel 2 # Disable window titlebars for i3-gaps
+for_window [class="Code"] move container to workspace $ws2, workspace $ws2, focus
 default_border pixel 1
 default_floating_border pixel 1
 # gaps inner 4

@@ -2,7 +2,6 @@
 # A list of the process I took to config this install of Arch Linux.
 # Includes passwords and .configs
 # TODO: Convert this into a script
-#
 
 # `lsblk`
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
@@ -150,3 +149,21 @@ sr0     11:0    1  1024M  0 rom
   Install syntax highlighter from tree sitter: ':TSInstall cpp python`:'
 ----
 # Change i3 to use vim keybindings 
+
+# Getting started with C and C++ development
+  Install clang: 'pacman -Syu clang'
+  Add 'export CC=clang' and (for C++) 'export CXX=clang++' to your /etc/makepkg.conf. If you are building with debug also remove -fvar-tracking-assignments from DEBUG_CFLAGS and DEBUG_CXXFLAGS as clang does not support it.
+  Install LLVM toolchain
+  'pacman -Syu clang lld lldb libc++'
+  Install cmake:
+  `pacman -Syu cmake`
+
+# Install redshift, the open source alternative to f.lux
+    `pacman -Syu redshift-minimal'
+    `systemctl --user enable redshift.service --now`
+    TODO: Create a hook script to use real screen brightness with light
+
+# Install vscode
+    `sudo mv ~/Downloads/VSCode-linux-x64 /opt/VSCode
+    `sudo ln -s /opt/VSCode/bin/code /usr/local/bin/code`
+    # Install C/C++, CMake, and vim plugin 
