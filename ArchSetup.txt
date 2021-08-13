@@ -167,3 +167,10 @@ sr0     11:0    1  1024M  0 rom
     `sudo mv ~/Downloads/VSCode-linux-x64 /opt/VSCode
     `sudo ln -s /opt/VSCode/bin/code /usr/local/bin/code`
     # Install C/C++, CMake, and vim plugin 
+
+# Install meson build system
+    `pacman -Syu meson`
+
+# Install C++ development tools:
+    `sudo -Syu doxygen graphviz ccache cppcheck`
+    https://github.com/include-what-you-use/include-what-you-use#how-to-install
