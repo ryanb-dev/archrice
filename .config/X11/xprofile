@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# This file will be sourced when using startx/xinit
+# It will be used to run start-up programs and scripts
+
+setbg &         # Set the background with the `setbg' script
+dunst &         # For notifications
+unclutter       # Remove mouse when idle

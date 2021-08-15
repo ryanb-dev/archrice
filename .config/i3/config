@@ -41,7 +41,6 @@ bindsym $super+Return exec urxvt
 # start program launcher
 bindsym $super+d exec --no-startup-id "rofi -show drun"
 bindsym $super+Tab exec --no-startup-id "rofi -show window"
-bindsym $super+x exec --no-startup-id "rofi -show run"
 
 # kill focused window
 bindsym $super+c kill
@@ -200,8 +199,8 @@ bar {
 for_window [class="Code"] move container to workspace $ws2, workspace $ws2, focus
 default_border pixel 1
 default_floating_border pixel 1
-# gaps inner 4
-# gaps outer 4
+gaps inner 4
+gaps outer 4
 
 # Color of border, background, text, indicator, and child_border #e5e9f0
 client.focused			#222d32 #222d32 #f8f8f2 #bf616a #f8f8f2

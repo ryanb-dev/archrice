@@ -58,7 +58,7 @@ sr0     11:0    1  1024M  0 rom
 	`pacman -S xsel` 
 
 # Install notification support: # TODO
-	`pacman -S libnotify dunst` # Can find dunst config at addy and luke smith github again
+	`pacman -S dunst` # Can find dunst config at addy and luke smith github again
 
 # Install firewall
 	`pacman -S nftables`
@@ -174,3 +174,9 @@ sr0     11:0    1  1024M  0 rom
 # Install C++ development tools:
     `sudo -Syu doxygen graphviz ccache cppcheck`
     https://github.com/include-what-you-use/include-what-you-use#how-to-install
+
+# Install wallpaper helper:
+    `sudo pacman -Syu xwallpaper`
+
+# Install unclutter to hide an inactive mouse: 
+    `sudo pacman -Syu unclutter`

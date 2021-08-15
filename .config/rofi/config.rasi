@@ -1,5 +1,5 @@
 configuration {
-	modi: "run,drun,window";
+	modi: "drun,window";
 	terminal: "urxvt";
 	font: "Hack 12";
 	width: 60;

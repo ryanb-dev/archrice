@@ -4,3 +4,4 @@
 # ------------------------------------
 
 sudo pacman -Rcns <package_name>  # Remove package and it's dependencies
+xrandr --output HDMI-1 --auto --right-of LVDS-1; setbg # Connect new monitor
