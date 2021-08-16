@@ -5,4 +5,4 @@
 
 setbg &         # Set the background with the `setbg' script
 dunst &         # For notifications
-unclutter       # Remove mouse when idle
+unclutter &     # Remove mouse when idle
