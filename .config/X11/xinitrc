@@ -39,7 +39,7 @@ else
 fi
 
 # Start up ssh-agent
-ssh-agent
+eval $(ssh-agent)
 
 # Start i3
 exec i3
