@@ -11,6 +11,10 @@ export VISUAL="nvim"
 export TERMINAL="urxvt"
 export BROWSER="firefox"
 
+# Default compilers
+export CC=clang
+export CXX=clang++
+
 # ~/ Clean-up
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"

@@ -180,3 +180,7 @@ sr0     11:0    1  1024M  0 rom
 
 # Install unclutter to hide an inactive mouse: 
     `sudo pacman -Syu unclutter`
+
+# Install pip and conan for package management:
+    `sudo pacman -Syu python-pip`
+    `pip install --user conan`
