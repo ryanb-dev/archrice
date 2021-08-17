@@ -1,36 +1,15 @@
-# interpreter for shell commands
-set shell sh
+# lf config 
 
-# set '-eu' options for shell commands
-# These options are used to have safer shell commands. Option '-e' is used to
-# exit on error and option '-u' is used to give error for unset variables.
-# Option '-f' disables pathname expansion which can be useful when $f, $fs, and
-# $fx variables contain names with '*' or '?' characters. However, this option
-# is used selectively within individual commands as it can be limiting at
-# times.
-set shellopts '-eu'
+# Basic vars
+set shell sh            # Set default shell
+set shellopts '-eu'     # Options for shell commands:
+                        #   '-e': exit on error
+                        #   '-u': give error for unset variables
+                        #   '-f': disables pathname expansion
+set ifs "\n"            # set internal field separator (IFS) to "\n" for shell commands
+set scrolloff 10        # leave some space at the top and the bottom of the screen
 
-# set internal field separator (IFS) to "\n" for shell commands
-# This is useful to automatically split file names in $fs and $fx properly
-# since default file separator used in these variables (i.e. 'filesep' option)
-# is newline. You need to consider the values of these options and create your
-# commands accordingly.
-set ifs "\n"
-
-# leave some space at the top and the bottom of the screen
-set scrolloff 10
-
-# use enter for shell commands
-map <enter> shell
-
-# execute current file (must be executable)
-map x $$f
-map X !$f
-
-# dedicated keys for file opener actions
-map o &mimeopen $f
-map O $mimeopen --ask $f
-
+# Cmds/Functions
 # define a custom 'open' command
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
@@ -43,34 +22,51 @@ cmd open ${{
     esac
 }}
 
-# define a custom 'rename' command without prompt for overwrite
-# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-# map r push :rename<space>
+cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 
-# make sure trash folder exists
-# %mkdir -p ~/.trash
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[[ ($ans = "y" || $ans = "Y") ]] && rm -rf -- $fx
+}}
 
-# move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash
+cmd moveto ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear; echo "Move to where?"
+	dest="$(cut -d' ' -f2- ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|' | sed 's/^ *//g' )" &&
+	for x in $fx; do
+		eval mv -iv \"$x\" \"$dest\"
+	done &&
+	notify-send "File(s) moved." "File(s) moved to $dest."
+}}
 
-# define a custom 'delete' command
-# cmd delete ${{
-#     set -f
-#     printf "$fx\n"
-#     printf "delete?[y/n]"
-#     read ans
-#     [ $ans = "y" ] && rm -rf $fx
-# }}
+cmd copyto ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear; echo "Copy to where?"
+	dest="$(cut -d' ' -f2- ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|' | sed 's/^ *//g' )" &&
+	for x in $fx; do
+		eval cp -ivr \"$x\" \"$dest\"
+	done &&
+	notify-send "File(s) copied." "File(s) copies to $dest."
+}}
 
-# use '<delete>' key for either 'trash' or 'delete' command
-# map <delete> trash
-# map <delete> delete
+cmd setbg "$1"
+cmd bulkrename $vidir
 
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
 cmd extract ${{
+    clear; tput cup $(($(tput lines)/3)); tput bold
     set -f
+    printf "%s\n\t" "$fx"
+    printf "extract?[y/N]"
+    read ans
+    [ $ans = "y" ] && 
     case $f in
         *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
         *.tar.gz|*.tgz) tar xzvf $f;;
@@ -98,3 +94,25 @@ cmd zip ${{
     zip -r $1.zip $1
     rm -rf $1
 }}
+
+# Bindings
+map <enter> shell
+map g top
+map D delete
+map E extract
+map C copyto
+map M moveto
+map V push <enter>$EDITOR<space>
+map <c-n> push :mkdir<space>
+map <c-r> reload
+map <c-s> set hidden!
+map x $$f
+map X !$f
+map o &mimeopen $f
+map O $mimeopen --ask $f
+
+# Rename bindings
+map A rename                    # at the end 
+map R push A<a-b><a-b><a-f>     # before extension
+map B bulkrename
+map b $setbg $f
