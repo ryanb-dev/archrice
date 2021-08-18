@@ -19,7 +19,7 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
-# Enable zsh-vi-mode.plugin
+ZVM_VI_ESCAPE_BINDKEY=jk
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Function to cd into directory via lf

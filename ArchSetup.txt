@@ -191,3 +191,11 @@ sr0     11:0    1  1024M  0 rom
 # Install mediainfno, for showing audio and video information
     'sudo pacman -Syu highlight chafa atool'
 
+# Install LukeSmith's st build: 
+    git clone https://github.com/LukeSmithxyz/st
+    cd st
+    sudo make install
+    # Create desktop file for this
+
+# Install dmenu for nice gui prompts
+    'sudo pacman -Syu dmenu'

@@ -36,7 +36,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 floating_modifier $super
 
 # start a terminal
-bindsym $super+Return exec urxvt
+bindsym $super+Return exec $TERMINAL
 
 # start program launcher
 bindsym $super+d exec --no-startup-id "rofi -show drun"

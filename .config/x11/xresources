@@ -43,6 +43,7 @@
 ! Font configuration
 ! ------------------------------------------------------------------------------
 
+st.font:                JetBrainsMono Nerd Font:style=Medium:pixelsize=14
 URxvt*font:		xft:JetBrainsMono Nerd Font Mono:style=Medium:pixelsize=14, xft:Braille:style=Regular:pixelsize=14
 URxvt*boldFont:		xft:JetBrainsMono Nerd Font Mono:style=Medium Bold:pixelsize=14
 URxvt*italicFont:	xft:JetBrainsMono Nerd Font Mono:style=Medium Italic:pixelsize=14
@@ -52,10 +53,10 @@ URxvt*boldItalicFont:	xft:JetBrainsMono Nerd Font Mono:style=Bold Italic:pixesiz
 ! Xft Font Configuration
 ! ------------------------------------------------------------------------------
 
-Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintslight
 Xft.hinting: 1
+Xft.autohint: 0
 Xft.antialias: 1
 Xft.rgba: rgb
 
