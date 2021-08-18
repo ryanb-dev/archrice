@@ -3,5 +3,5 @@
 # Simple little script for my current monitor setup
 
 xrandr --output HDMI-1 --auto --right-of LVDS-1
-setbg # Fix background if screen size/arrangement has changed
+setbg "$BG_FOLDER" # Fix background if screen size/arrangement has changed
 { killall dunst ; setsid -f dunst ;} >/dev/null 2>&1 # Restart dunst to ensure proper location on screen
