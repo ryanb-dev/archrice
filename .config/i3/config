@@ -13,7 +13,7 @@ set $super Mod4
 set $alt Mod1
 
 # Set font
-font pango: Noto Sans 8 # monospace 8
+font pango: JetBrainsMono Nerd Font 8 # Noto Sans 8 
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -23,12 +23,17 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Use light to adjust screen brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
 
@@ -172,23 +177,6 @@ mode "resize" {
 
 bindsym $super+r mode "resize"
 
-# Start i3bar to display a workspace bar
-bar {
-	colors {
-	background #222d32
-	statusline #222d32
-	separator #4b5262
-	
-	# Color of border, background, and text
-	focused_workspace	#222d32 #bd93f9 #222d32
-	active_workspace	#222d32 #222d32 #f8f8f2
-	inactive_workspace	#222d32 #222d32 #f8f8f2
-	urgent_workspace	#222d32 #f1fa8c #222d32
-	}
-        
-	status_command i3status
-}
-
 # Window rules.  The window class can be found using xprop
 # assign [class=URxvt] 1
 # for_window[class=] floating enable
@@ -196,7 +184,7 @@ bar {
 
 # Pretty gaps stuff
 # for_window [class=".*"] border pixel 2 # Disable window titlebars for i3-gaps
-for_window [class="Code"] move container to workspace $ws2, workspace $ws2, focus
+#for_window [class="Code"] move container to workspace $ws2, workspace $ws2, focus
 default_border pixel 1
 default_floating_border pixel 1
 gaps inner 4

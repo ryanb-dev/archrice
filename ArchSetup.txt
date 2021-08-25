@@ -199,3 +199,10 @@ sr0     11:0    1  1024M  0 rom
 
 # Install dmenu for nice gui prompts
     'sudo pacman -Syu dmenu'
+
+# Install polybar to replace i3 status: `yay -Syu polybar`
+# Install Material Design icons: `yay -Syu ttf-material-design-icons` 
+# Install unifont: `yay -Syu ttf-unifont`
+
+# Install pacman-contrib to use checkupdates command
+# Install hook in /etc/pacman.d/hooks/polybar.hook

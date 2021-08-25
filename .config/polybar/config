@@ -1,0 +1,45 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+
+;==========================================================
+;       File includes
+;==========================================================
+
+[section/base]
+include-file = ~/.config/polybar/main.conf
+include-file = ~/.config/polybar/modules.conf
+
+
+;==========================================================
+;      i3 bars 
+;==========================================================
+
+[bar/LVDS-1]
+inherit = bar/main
+monitor = LVDS-1
+modules-left = round-left i3 round-right 
+modules-center = round-left cpu round-right round-left time round-right
+modules-right = package-updates-trigger package-updates wlan mem alsa battery
+
+[bar/HDMI-1]
+inherit = bar/main
+monitor = HDMI-1
+modules-left = round-left i3 round-right
+modules-center = round-left cpu round-right round-left time round-right
+modules-right = package-updates-trigger package-updates wlan mem alsa battery 

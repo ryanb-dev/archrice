@@ -42,7 +42,7 @@ bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
 # Aliases
 alias config='/usr/bin/git --git-dir=/home/ryanb/.dotfiles/ --work-tree=/home/ryanb'
-
+alias nv='/usr/bin/nvim'
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
