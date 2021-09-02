@@ -209,3 +209,8 @@ sr0     11:0    1  1024M  0 rom
 
 # Install boost: `sudo pacman -Syu boost`
 # Install libreoffice: `sudo pacman -Syu libreoffice-fresh`
+# Install texlive-most: `sudo pacman -Syu texlive-most`
+# Install vim-tex-kawaii plugin for latex
+# Add following commands to nvim config:
+    To compile, just map: nmap <leader>cc :w<cr> :!pdflatex %:r.tex && bibtex %:r.aux && pdflatex %:r.tex && pdflatex %:r.tex && rm %:r.aux %:r.log %:r.blg %:r.bbl<cr>
+    To view the file in Zathura: nmap <leader>cv :!zathura %:r.pdf > /dev/null 2>&1 &<cr><cr>
