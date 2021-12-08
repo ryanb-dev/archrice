@@ -41,5 +41,8 @@ fi
 # Start up ssh-agent
 eval $(ssh-agent -s)
 
+# Set the delay rate for the keyboard
+xset r rate 200 25
+
 # Start i3
 exec i3

@@ -1,6 +1,6 @@
 configuration {
 	modi: "drun,window";
-	terminal: "urxvt";
+	terminal: "st";
 	font: "Hack 12";
 	width: 60;
 	lines: 12;

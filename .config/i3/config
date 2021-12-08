@@ -47,6 +47,12 @@ bindsym $super+Return exec $TERMINAL
 bindsym $super+d exec --no-startup-id "rofi -show drun"
 bindsym $super+Tab exec --no-startup-id "rofi -show window"
 
+# Take a screenshot
+bindsym --release $super+Print exec maimpick
+
+# Open browser
+bindsym $super+b exec $BROWSER
+
 # kill focused window
 bindsym $super+c kill
 bindsym $alt+F4 kill
@@ -187,6 +193,7 @@ bindsym $super+r mode "resize"
 #for_window [class="Code"] move container to workspace $ws2, workspace $ws2, focus
 default_border pixel 1
 default_floating_border pixel 1
+floating_maximum_size 1280 x 720
 gaps inner 4
 gaps outer 4
 

@@ -15,6 +15,9 @@ export BROWSER="firefox"
 export CC=clang
 export CXX=clang++
 
+# Add go to path
+export PATH=$PATH:/usr/local/go/bin
+
 # ~/ Clean-up
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
