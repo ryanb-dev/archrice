@@ -20,7 +20,7 @@ compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 # ZVM_VI_ESCAPE_BINDKEY=jk
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Function to cd into directory via lf
 lfcd () {
@@ -39,10 +39,15 @@ lfcd () {
 
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
+bindkey '^z' push-line-or-edit
 
 # Aliases
 alias config='/usr/bin/git --git-dir=/home/ryanb/.dotfiles/ --work-tree=/home/ryanb'
 alias nv='/usr/bin/nvim'
+alias gs='git status'
+alias gap='git add -p'
+alias gc='git commit'
+alias gd='git diff'
 
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null

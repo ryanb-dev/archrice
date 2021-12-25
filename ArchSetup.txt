@@ -188,7 +188,7 @@ sr0     11:0    1  1024M  0 rom
 # Install highlight, for highlighting code output (currently in lf preview)
 # Install chafa, for previewing images
 # Install atool, for managing and giving information about archives
-# Install mediainfno, for showing audio and video information
+# Install mediainfo, for showing audio and video information
     'sudo pacman -Syu highlight chafa atool'
 
 # Install LukeSmith's st build: 
