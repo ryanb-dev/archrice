@@ -221,8 +221,17 @@ sr0     11:0    1  1024M  0 rom
 
 # Install go:
 From: https://golang.org/doc/install
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.1.linux-amd64.tar.gz
-source the following in $HOME/.profile: export PATH=$PATH:/usr/local/go/bin
+    rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.1.linux-amd64.tar.gz
+    source the following in $HOME/.profile: export PATH=$PATH:/usr/local/go/bin
 
 # In neovim: :TSInstall go
-yay -Syu golangci-lint
+    yay -Syu golangci-lint
+
+# Install tridactyl extension for firefox
+    pacman -Syu firefox-tridactyl
+
+# Install zoxide for better cd
+    pacman -S zoxide
+
+# I deleted urxvt as st seems to be doing the trick.
+    pacman -Rcns rxvt-unicode

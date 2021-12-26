@@ -31,8 +31,9 @@ export SAVEHIST=1
 export HISTSIZE=50
 export LESSHISTFILE="-" # Disable creation of lesshst file
 export BG_FOLDER="${XDG_DATA_HOME:-$HOME/.local/share}/bgs"
+
 # Other program settings
-# TODO
+export MOZ_WEBRENDER=1 # Force enable WebRender compositor for Firefox.
 
 # Start graphical server if not already running and if virtual terminal <= 3
 if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -le 3 ]; then
