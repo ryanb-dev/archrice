@@ -67,6 +67,7 @@ bindkey '^z' push-line-or-edit
 
 # Aliases
 alias config='/usr/bin/git --git-dir=/home/ryanb/.dotfiles/ --work-tree=/home/ryanb'
+alias update='sudo pacman -Syu; yay -Syu'
 alias nv='/usr/bin/nvim'
 alias gs='git status'
 alias gb='git branch'
